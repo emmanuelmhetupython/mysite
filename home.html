@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{%  block content %}
+<div class="container">
+  
+  <marquee><h3>Welcome to Python4all : {% if user.is_authenticated %}{{ user.username}}{% else %}Visitor{% endif %}</h3></marquee>
+
+<h5>History of Python from Python Creator Guido Van Rossum</h5>
+<div class="video-container">
+  <iframe width="634" height="360" src="https://www.youtube.com/embed/ualxVE4YOjc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> frameborder="0" allowfullscreen></iframe>
+
+</div>
+<h5>The Father of Python Programming Language</h5>
+    <div class="video-container">
+      <iframe width="640" height="360" src="https://www.youtube.com/embed/qxMcGDnT8uc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  {% endblock %}
+
+</div>

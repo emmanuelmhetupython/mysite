@@ -1,0 +1,162 @@
+<head>
+  {% load static %}
+  {% load crispy_forms_tags %}
+  <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link href="{% static 'core/css/materialize.min.css' %}" rel="stylesheet">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="{% static 'core/js/materialize.min.js' %}"></script>
+
+</head>
+
+<body>
+<hr>
+<h2 style="text-align: center"><a img=src="static/core/img/logo.jpg" href="/" class="brand-logo">Python4all</a></h2>
+<hr>
+  <nav>
+    <div class="nav-wrapper">
+    
+      <ul id="nav-mobile" class="right show-on-medium-and-down">
+        <div class="navbar-fixed">
+          <li><a href="/">HOME</a></li>
+          <li><a href="/aboutMI">ABOUT US</a></li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'book_list' %}">DATASETS</a>
+            </li>
+            <li><a href="#">LEARN PYTHON</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'create_post' %}">FORUM</a></li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'upload' %}">UPLOAD A DATASET</a>
+            </li>
+          <li><a href="#">WELCOME:{{user.username}}</a></li>
+          <li><a href="{% url 'password_change' %}">CHANGE PASSWORD</a></li>
+          <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+          {% else %}
+          <li><a href="{% url 'signup' %}">SIGN UP</a></li>
+          <li><a href="{% url 'login' %}">LOGIN</a></li>
+          {%   endif %}
+          <li><a href="/donate">DONATE</a></li>
+      </ul>
+    </div>
+
+
+  </nav>
+  </div>
+
+
+  {% if messages %}
+  {% for message in messages %}
+  {% if message.tags == 'success' %}
+  <script>  M.toast({ html: "{{message}}", classes: 'green rounded', displayLength: '2000' }); </script>
+
+  {% elif message.tags == 'info' %}
+  <script>  M.toast({ html: "{{message}}", classes: 'blue rounded', displayLength: '2000' }); </script>
+
+  {% elif message.tags == 'warning' %}
+  <script>  M.toast({ html: "{{message}}", classes: 'red rounded', displayLength: '10000' }); </script>
+
+  {% elif message.tags == 'error' %}
+  <script>  M.toast({ html: "{{message}}", classes: 'pink rounded', displayLength: '10000' }); </script>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  <!--<marquee><h4 style="background-color:rgb(201, 78, 33);">This is the home of python programming language.</h4></marquee>-->
+  <div class="container" {%  block content %} {%  endblock %} </div> <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Who am l</h5>
+          <p class="grey-text text-lighten-4">l am a python programmer, teacher and entreprenuer.Python programming
+            language is a top programming language for all. With python you can do
+            do what you want from web development, data science, mobile application development, internet of things,
+            game development, artificial intelligence and robotics
+            ,just name it and you can do it using python. All thanks goes to Guido Van Rossum,the father and creator of
+            python programming language.s Python4aLL is a community were python programmers interact and share ideas of
+            all aspects mention above. Founded by a python programmer Emmanuel Mhetu, python4all.net is a platform for
+            begginners, intermediate and advanced
+            python programmers to share the latest about python. If you are to google search about python. It is the
+            number on
+            programming langauge followed by JavaScript and the rest will follow. Again python programming language is
+            the simplest
+            and very powerful programming language as compared to other languages.
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Important Links</h5>
+          <ul>
+            {% if user.is_authenticated %}
+            <li><a href="/forum">Forum</a></li>
+            <li><a href="/account">{{user.username}}</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="/">Blog</a></li>
+            <li><a href="{% url 'signup' %}">Register</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+
+            {%   endif %}
+          </ul>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems, options);
+          });
+
+          // Or with jQuery
+
+          $('.dropdown-trigger').dropdown();
+
+        </script>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">I am social,talk to me</h5>
+          <br>
+          <a href="https://twitter.com/intent/tweet?screen_name=profmhetu&ref_src=twsrc%5Etfw"
+            class="twitter-mention-button" data-show-count="false">Tweet to @profmhetu</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <div class="container">
+        © 2019 Site by Emmanuel Mhetu
+        <a class="grey-text text-lighten-4 right" href="https://www.python.org/">More Links</a>
+      </div>
+    </div>
+    </footer>
+
+
+</body>
+<script src="{% static  'tinymce/js/prism.js' %}"></script>
+<script>
+  // Insert script:
+  (function (w, d, s, p, a, c) {
+    w.sfButton = w.sfButton || function () { };
+    c = d.getElementsByTagName(s)[0];
+    a = d.createElement(s);
+    a.async = 1;
+    a.src = p;
+    c.parentNode.insertBefore(a, c);
+  })(window, document, 'script', '//savefrom.net/js/sf-helper-agent.min.js');
+
+  // Text:
+  sfButton.text = 'Download';
+
+  // Styles:
+  sfButton.styles = {
+    color: 'rgba(0,0,0,0.7)',
+    textShadow: '1px 1px 1px rgba(255,255,255,0.4)',
+    fontFamily: 'Arial,Helvetica,sans-serif',
+    fontSize: '12px',
+    borderRadius: '4px',
+    backgroundColor: '#81c200',
+    'background-image': '-webkit-linear-gradient(#9cd600, #69ae00)',
+    'background-image': '-moz-linear-gradient(#9cd600, #69ae00)',
+    'background-image': 'linear-gradient(#9cd600, #69ae00)',
+    border: 'none'
+  };
+</script>
